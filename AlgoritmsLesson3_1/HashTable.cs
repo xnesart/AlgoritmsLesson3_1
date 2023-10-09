@@ -37,13 +37,18 @@ namespace AlgoritmsLesson3_1
         public bool Remove(T item)
         {
             var key = GetHash(item);
-            items[key] = null;
-            if (items[key] != null && items[key].Equals(item) )
+            for (int i = key; i < items.Length; i++)
             {
-                key = null;
+                if (items[i] != null && items[i].Equals(item))
+                {
+                    items[i] = default(T);
+                    return true;
+                }
             }
-            else return false; 
+
+            return false;
         }
+
         public bool Search(T item)
         {
             var key = GetHash(item);
@@ -52,7 +57,6 @@ namespace AlgoritmsLesson3_1
                 return items[key].Equals(item);
             }
             else return false;
-            //Console.WriteLine(items[key]);
         }
 
         private int GetHash(T item)
@@ -60,7 +64,7 @@ namespace AlgoritmsLesson3_1
             return item.ToString().Length % items.Length;
         }
 
-        public void PrintTable(HashTable<T> hashTable, IEnumerator hashTableEnumerator)
+        public void PrintTable(IEnumerator hashTableEnumerator)
         {
             while (hashTableEnumerator.MoveNext()) // пока не будет возвращено false
             {

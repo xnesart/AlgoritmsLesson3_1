@@ -27,13 +27,14 @@ namespace AlgoritmsLesson3_1
             hashTable.Add("'Финик': 104");
 
             Console.WriteLine(hashTable.Search("'Водоросли': 280"));
-            //Console.WriteLine(isBe);
+            hashTable.Remove("'Орехи грецкие': 266");
+            hashTable.Remove("'Водоросли': 280");
+            hashTable.Remove("'Специи': 283");
+            hashTable.Remove("'Манго': 291");
+            
             IEnumerator hashTableEnumerator = hashTable.GetEnumerator(); // получаем IEnumerator
-            //hashTable.PrintTable(hashTable,hashTableEnumerator);
+            hashTable.PrintTable(hashTableEnumerator);
             hashTableEnumerator.Reset(); // сбрасываем указатель в начало массива
-
-
-            Console.WriteLine(hashTable);
         }
     }
 }
